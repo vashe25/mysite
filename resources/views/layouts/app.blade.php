@@ -14,7 +14,11 @@
                 <!-- Navbar Contents -->
             </nav>
         </div>
-
-        @yield('content')
+        <div class="container">
+            @yield('header')
+        </div>
+        <div class="container">
+            @yield('content')
+        </div>
     </body>
 </html>
