@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    //public function scopeId($query){
-    	//$query->where(["id" => ])
-    //}
+	public function detail($id){
+		$post = $this->active()->find($id);
+		return $post;
+	}
 
-
-    public function scopePublished($query){
+    public function scopeActive($query){
     	$query->where(["active" => 1]);
     }
 }
