@@ -12,19 +12,19 @@
 			<p><span class="glyphicon glyphicon-sort-by-order"></span></p>
 			<table class="table">
 				<tr>
-					<td>id</td>
-					<td>name</td>
-					<td>desription</td>
-					<td>content</td>
-					<td>active</td>
-					<td>published_at</td>
-					<td>created_at</td>
-					<td>updated_at</td>
+					<td>ID</td>
+					<td>NAME</td>
+					<td>DESCRIPTION</td>
+					<td>CONTENT</td>
+					<td>ACTIVE</td>
+					<td>PUBLISHED_AT</td>
+					<td>CREATED_AT</td>
+					<td>UPDATED_AT</td>
 				</tr>
 				@foreach ($posts as $post)
 					<tr>
 						<td>{{$post->id}}</td>
-						<td>{{$post->name}}</td>
+						<td><a href="{{ action('PostController@detail', $post->id) }}">{{$post->name}}</a></td>
 						<td>{{$post->description}}</td>
 						<td>{{$post->content}}</td>
 						<td>{{$post->active}}</td>
@@ -35,5 +35,11 @@
 				@endforeach
 			</table>
 		</div>		
+	</div>
+	<!-- pagination -->
+	<div class="row">
+		<div class="col-md-12">
+			{{ $posts->render() }}
+		</div>
 	</div>
 @endsection

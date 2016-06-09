@@ -9,13 +9,14 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-	public function index(){
-		$posts = Post::all();
+	public function index(Post $postModel){
+		$posts = $postModel->listActive();
 		return view("posts/list", ["posts" => $posts]);
 	}
 
 	public function detail(Post $postModel, $id){
 		$post = $postModel->detail($id);
-		dd($post);
+		$postsURL = action("PostController@index");
+		return view("posts/detail", ["post" => $post, "link" => $postsURL]);
 	}
 }

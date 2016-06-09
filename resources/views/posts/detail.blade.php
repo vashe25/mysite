@@ -2,38 +2,28 @@
 
 @section('header')
 	<div class="page-header">
-		<h1>Posts <small>list of elements</small></h1>
+		<h1>Post: {{ $post->name }} <small>detail page</small></h1>
 	</div>
 @endsection
 
 @section('content')
 	<div class="row">
-		<div class="col-md-12">
-			<p><span class="glyphicon glyphicon-sort-by-order"></span></p>
-			<table class="table">
-				<tr>
-					<td>id</td>
-					<td>name</td>
-					<td>desription</td>
-					<td>content</td>
-					<td>active</td>
-					<td>published_at</td>
-					<td>created_at</td>
-					<td>updated_at</td>
-				</tr>
-				@foreach ($posts as $post)
-					<tr>
-						<td>{{$post->id}}</td>
-						<td>{{$post->name}}</td>
-						<td>{{$post->description}}</td>
-						<td>{{$post->content}}</td>
-						<td>{{$post->active}}</td>
-						<td>{{$post->published_at}}</td>
-						<td>{{$post->created_at}}</td>
-						<td>{{$post->updated_at}}</td>
-					</tr>
-				@endforeach
-			</table>
-		</div>		
+		<div class="col-md-4">ID</div>
+		<div class="col-md-8">{{ $post->id }}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">DESCRIPTION</div>
+		<div class="col-md-8">{{ $post->description }}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">CONTENT</div>
+		<div class="col-md-8">{{ $post->content }}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">PUBLISHED AT</div>
+		<div class="col-md-8">{{ $post->published_at }}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12"><a href="{{ $link }}">Back to Posts list</a></div>
 	</div>
 @endsection
