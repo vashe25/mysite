@@ -49,3 +49,5 @@ Route::delete('/task/{task}', function (Task $task) {
 
 Route::get('/posts', 'PostController@index');
 Route::get('/posts/{id}', 'PostController@detail');
+Route::get('/posts/edit/{id}', 'PostController@edit');
+Route::post('/posts/update/{id}', 'PostController@update');
