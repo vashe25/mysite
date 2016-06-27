@@ -10,32 +10,31 @@
 	<div class="row">
 		<div class="col-md-12">
 			<p><span class="glyphicon glyphicon-sort-by-order"></span></p>
-			<table class="table">
+			<table class="table table-striped">
 				<tr>
 					<td>ID</td>
 					<td>NAME</td>
 					<td>DESCRIPTION</td>
-					<td>CONTENT</td>
 					<td>ACTIVE</td>
 					<td>PUBLISHED_AT</td>
-					<td>CREATED_AT</td>
-					<td>UPDATED_AT</td>
 				</tr>
 				@foreach ($posts as $post)
 					<tr>
 						<td>{{$post->id}}</td>
 						<td><a href="{{ action('PostController@detail', $post->id) }}">{{$post->name}}</a></td>
 						<td>{{$post->description}}</td>
-						<td>{{$post->content}}</td>
 						<td>{{$post->active}}</td>
 						<td>{{$post->published_at}}</td>
-						<td>{{$post->created_at}}</td>
-						<td>{{$post->updated_at}}</td>
 					</tr>
 				@endforeach
 			</table>
 		</div>		
 	</div>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-default" href="{!! action('PostController@add') !!}">Create new Post</a>
+        </div>
+    </div>
 	<!-- pagination -->
 	<div class="row">
 		<div class="col-md-12">

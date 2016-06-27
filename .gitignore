@@ -4,4 +4,6 @@
 Homestead.yaml
 Homestead.json
 .env
-laravel.sublime-project
+.idea
+.sublime-project
+.sublime-workspace
