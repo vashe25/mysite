@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+	protected $table = "posts";
 	// list active (published) posts with pagination
 	public function listActive($rows = 10){
 		$posts = $this->active()->paginate($rows);
