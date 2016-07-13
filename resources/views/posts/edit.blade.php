@@ -7,6 +7,15 @@
 @endsection
 
 @section('content')
+	@if (count($errors) > 0)
+		<div class="row">
+			<div class="col-md-12">
+				@foreach($errors->all() as $error)
+					<div class="alert alert-danger" role="alert"><strong>Error:</strong> {{ $error }}</div>
+				@endforeach
+			</div>
+		</div>
+	@endif
 	<form action="{!! action('PostController@update', ['id' => isset($post->id) ? $post->id : 0]) !!}" id="editPost" method="POST">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="row">

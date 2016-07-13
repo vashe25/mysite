@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Validator;
 use App\Http\Requests;
 use App\Models\Post;
 
@@ -29,6 +29,18 @@ class PostController extends Controller
 	}
 	
 	public function update(Request $request, Post $postModel, $id = 0){
+		$validator = Validator::make($request->all(), [
+					"name" => "required",
+				]);
+		if ($validator->fails()){
+			if ($id == 0) {
+				return redirect()->action("PostController@add")
+					->withErrors($validator);
+			} else {
+				return redirect()->action("PostController@edit", ["id" => $id])
+					->withErrors($validator);
+			}
+		}
 		if ($id == 0){
             $postModel->name = $request->name;
             $postModel->description = $request->description;
