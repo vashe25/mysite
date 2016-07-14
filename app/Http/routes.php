@@ -46,9 +46,10 @@ Route::delete('/task/{task}', function (Task $task) {
     return redirect('/');
 });
 
-
+// Post routing
 Route::get('/posts', 'PostController@index');
 Route::get('/posts/{id}', 'PostController@detail');
 Route::get('/posts/add/0', 'PostController@add');
 Route::get('/posts/edit/{id}', 'PostController@edit');
+Route::get('/posts/delete/{id}', 'PostController@delete');
 Route::post('/posts/update/{id}', 'PostController@update');

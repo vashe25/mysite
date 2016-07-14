@@ -60,4 +60,9 @@ class PostController extends Controller
             return redirect()->action("PostController@edit", ["id" => $id]);
         }
 	}
+
+	public function delete(Post $postModel, $id){
+		$postModel->destroy($id);
+		return redirect()->action("PostController@index");
+	}
 }

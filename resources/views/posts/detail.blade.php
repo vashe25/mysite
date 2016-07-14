@@ -25,10 +25,11 @@
 	</div>
 	<div class="row">
 		<div class="col-md-2">
-			<a class="btn btn-default" href="{!! action('PostController@index') !!}">Back to list</a>
+			<a class="btn btn-default" href="{!! action('PostController@index') !!}"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List</a>
 		</div>
 		<div class="col-md-10">
-			<a class="btn btn-primary" href="{!! action('PostController@edit', ['id' => $post->id]) !!}">Edit this Post</a>
+			<a class="btn btn-primary" href="{!! action('PostController@edit', $post->id) !!}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+			<a class="btn btn-danger" href="{!! action('PostController@delete', $post->id) !!}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</a>
 		</div>
 	</div>
 @endsection

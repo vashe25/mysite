@@ -11,12 +11,12 @@
 		<div class="row">
 			<div class="col-md-12">
 				@foreach($errors->all() as $error)
-					<div class="alert alert-danger" role="alert"><strong>Error:</strong> {{ $error }}</div>
+					<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> <strong>Error:</strong> {{ $error }}</div>
 				@endforeach
 			</div>
 		</div>
 	@endif
-	<form action="{!! action('PostController@update', ['id' => isset($post->id) ? $post->id : 0]) !!}" id="editPost" method="POST">
+	<form action="{!! action('PostController@update', isset($post->id) ? $post->id : 0) !!}" id="editPost" method="POST">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="row">
 			<div class="col-md-2">ID</div>
@@ -66,10 +66,11 @@
 		</div>
 		<div class="row">
 			<div class="col-md-2">
-				<a class="btn btn-default" href="{!! action('PostController@index') !!}">Back to list</a>
+				<a class="btn btn-default" href="{!! action('PostController@index') !!}"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List</a>
 			</div>
 			<div class="col-md-10">
-				<input class="btn btn-primary" type="submit" value="Save changes" form="editPost">
+
+				<button class="btn btn-primary" type="submit" form="editPost"><span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Save</button>
 			</div>
 		</div>
 	</form>
