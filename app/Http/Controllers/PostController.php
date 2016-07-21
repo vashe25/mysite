@@ -10,7 +10,7 @@ use App\Models\Post;
 class PostController extends Controller
 {
 	public function index(Post $postModel){
-		$posts = $postModel->listActive();
+		$posts = $postModel->getAll();
 		return view("posts/list", ["posts" => $posts]);
 	}
 

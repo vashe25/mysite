@@ -14,12 +14,12 @@ class Post extends Model
 	}
 	// list of all posts with pagination
 	public function getAll($rows = 10){
-		$posts = $this->all()->paginate($rows);
+		$posts = $this->paginate($rows);
 		return $posts;
 	}
 	// return active post by id
 	public function detail($id){
-		$post = $this->active()->find($id);
+		$post = $this->find($id);
 		return $post;
 	}
 	// return post by id
