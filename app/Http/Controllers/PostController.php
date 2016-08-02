@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Storage;
 use Validator;
 use App\Http\Requests;
 use App\Models\Post;
 
 class PostController extends Controller
 {
+	public function show(Post $postModel){
+		$posts = $postModel->listActive(5);
+		return view("posts/index", ["posts" => $posts]);
+	}
+	
 	public function index(Post $postModel){
 		$posts = $postModel->getAll();
 		return view("posts/list", ["posts" => $posts]);
@@ -56,6 +62,17 @@ class PostController extends Controller
             $post->content = $request->content;
             $post->published_at = $request->published_at;
             $post->active = $request->active;
+			if (TRUE/*$request->hasFile("img_src")*/){
+				$file = $request->file("img_src");
+
+				dd($file);
+
+				Storage::put(
+					"/posts/".$id,
+					file_get_contents($request->file("img_src")->getRealPath())
+				);
+				$post->img_src = Storage::url("/posts/".$id."/".$request->file("img_src"));
+			}
             $post->save();
             return redirect()->action("PostController@edit", ["id" => $id]);
         }

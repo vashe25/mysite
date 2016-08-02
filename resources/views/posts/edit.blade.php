@@ -23,6 +23,16 @@
 			<div class="col-md-10">{{ $post->id or 0 }}</div>
 		</div>
 		<div class="row">
+			<div class="col-md-2">IMG_SRC</div>
+			<div class="col-md-10"><img src="{!! $post->img_src !!}"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-10">
+				<input type="file" name="img_src">
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-2">NAME</div>
 			<div class="col-md-10">
 				<input class="form-control" type="text" name="name" value="{{ $post->name or NULL }}">

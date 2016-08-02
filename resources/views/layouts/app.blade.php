@@ -2,7 +2,7 @@
     <head>
         <title>Laravel Quickstart - Basic</title>
 
-        <script type="text/javascript" src="/js/jquery-1.12.4.min"></script>
+        <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 
         <!-- CSS And JavaScript -->
