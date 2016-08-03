@@ -66,7 +66,7 @@ class PostController extends Controller
 				$file = $request->file("img_src");
 				Storage::put(
 					"public/posts/".$id."/".$file->getClientOriginalName(),
-					file_get_contents($request->file("img_src")->getRealPath())
+					file_get_contents($request->file("img_src")->getRealPath(), "public")
 				);
 				$post->img_src = Storage::url("public/posts/".$id."/".$file->getClientOriginalName());
 			}
