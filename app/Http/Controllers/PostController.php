@@ -14,7 +14,7 @@ class PostController extends Controller
 		$posts = $postModel->listActive(5);
 		return view("posts/index", ["posts" => $posts]);
 	}
-	
+
 	public function index(Post $postModel){
 		$posts = $postModel->getAll();
 		return view("posts/list", ["posts" => $posts]);
@@ -33,7 +33,7 @@ class PostController extends Controller
 		$post = $postModel->edit($id);
 		return view("posts/edit", ["post" => $post]);
 	}
-	
+
 	public function update(Request $request, Post $postModel, $id = 0){
 		$validator = Validator::make($request->all(), [
 					"name" => "required",
@@ -62,16 +62,13 @@ class PostController extends Controller
 			$post->content = $request->content;
 			$post->published_at = $request->published_at;
 			$post->active = $request->active;
-			if (TRUE/*$request->hasFile("img_src")*/){
+			if ($request->hasFile("img_src")){
 				$file = $request->file("img_src");
-
-				dd($file);
-
 				Storage::put(
-					"/posts/".$id,
+					"public/posts/".$id."/".$file->getClientOriginalName(),
 					file_get_contents($request->file("img_src")->getRealPath())
 				);
-				$post->img_src = Storage::url("/posts/".$id."/".$request->file("img_src"));
+				$post->img_src = Storage::url("public/posts/".$id."/".$file->getClientOriginalName());
 			}
 			$post->save();
 			return redirect()->action("PostController@edit", ["id" => $id]);
