@@ -16,7 +16,7 @@
 			</div>
 		</div>
 	@endif
-	<form action="{!! action('PostController@update', isset($post->id) ? $post->id : 0) !!}" id="editPost" method="POST">
+	<form action="{!! action('PostController@update', isset($post->id) ? $post->id : 0) !!}" id="editPost" enctype="multipart/form-data" method="POST">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="row">
 			<div class="col-md-2">ID</div>
